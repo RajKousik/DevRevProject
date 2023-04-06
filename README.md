@@ -3,6 +3,15 @@
 # About Project
 A social media website clone that allows users to create profiles, connect with friends, share posts, and interact with other users.
 
+In this Web application, users can either login or register and connect with their friends and families. They can share posts, videos, etc. The technologies used in this project includes:
+1.React JS
+2.SCSS
+3.MySQL
+4.Express
+5.Node
+
+ 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
