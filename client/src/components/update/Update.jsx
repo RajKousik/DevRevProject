@@ -135,13 +135,6 @@ const Update = ({ setOpenUpdate, user }) => {
             value={texts.city}
             onChange={handleChange}
           />
-          {/* <label>Website</label>
-          <input
-            type="text"
-            name="website"
-            value={texts.website}
-            onChange={handleChange}
-          /> */}
           <button onClick={handleClick}>Update</button>
         </form>
         <button className="close" onClick={() => setOpenUpdate(false)}>
@@ -150,7 +143,7 @@ const Update = ({ setOpenUpdate, user }) => {
       </div>
     </div>
   );
-};
+}; 
 
 
 export default Update;

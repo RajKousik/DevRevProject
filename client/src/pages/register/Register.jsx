@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./register.scss";
 import axios from "axios";
 
@@ -12,6 +12,8 @@ const Register = () => {
   });
   const [err, setErr] = useState(null);
 
+  const navigate = useNavigate()
+
   const handleChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -21,6 +23,7 @@ const Register = () => {
 
     try {
       await axios.post("http://localhost:8800/api/auth/register", inputs);
+      navigate("/login")
     } catch (err) {
       setErr(err.response.data);
     }
@@ -32,11 +35,10 @@ const Register = () => {
     <div className="register">
       <div className="card">
         <div className="left">
-          <h1>Lama Social.</h1>
+
+          <h1>Welcome to Connectify!</h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero cum,
-            alias totam numquam ipsa exercitationem dignissimos, error nam,
-            consequatur.
+            A social media website clone that allows users to create profiles, connect with friends, share posts, and interact with other users.
           </p>
           <span>Do you have an account?</span>
           <Link to="/login">
@@ -50,27 +52,29 @@ const Register = () => {
               type="text"
               placeholder="Username"
               name="username"
-              onChange={handleChange}
+              onChange={handleChange} required
             />
             <input
               type="email"
               placeholder="Email"
               name="email"
-              onChange={handleChange}
+              onChange={handleChange} required
             />
             <input
               type="password"
               placeholder="Password"
               name="password"
-              onChange={handleChange}
+              onChange={handleChange} required
             />
             <input
               type="text"
               placeholder="Name"
               name="name"
-              onChange={handleChange}
+              onChange={handleChange} required
             />
+            <div className="error-red">
             {err && err}
+            </div>
             <button onClick={handleClick}>Register</button>
           </form>
         </div>

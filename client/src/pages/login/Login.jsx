@@ -32,11 +32,9 @@ const Login = () => {
     <div className="login">
       <div className="card">
         <div className="left">
-          <h1>Hello World.</h1>
+          <h1>Hello DevRev!</h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero cum,
-            alias totam numquam ipsa exercitationem dignissimos, error nam,
-            consequatur.
+            A social media website clone that allows users to create profiles, connect with friends, share posts, and interact with other users.
           </p>
           <span>Don't you have an account?</span>
           <Link to="/register">
@@ -56,9 +54,11 @@ const Login = () => {
               type="password"
               placeholder="Password"
               name="password"
-              onChange={handleChange}
+              onChange={handleChange} 
             />
+            <div className="error-red">
             {err && err}
+            </div>
             <button onClick={handleLogin}>Login</button>
           </form>
         </div>

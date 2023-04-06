@@ -8,15 +8,20 @@ export const register = (req, res) => {
   const q = "SELECT * FROM users WHERE username = ?";
 
   db.query(q, [req.body.username], (err, data) => {
-    if (err) {
-      // console.log(err);
-      // console.log(data);
+    if (err) 
+    {
       return res.status(500).json(err);  
-        }
-      //  res.send(err.toString()); 
+    }
+ 
     if (data.length) return res.status(409).json("User already exists!");
     //CREATE A NEW USER
     //Hash the password
+
+    if(req.body.username == "" || req.body.email == "" || req.body.password == "" || req.body.name == "")
+    {
+      return res.status(500).json("Fields cannot be empty");
+    }
+
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(req.body.password, salt);
 
@@ -38,6 +43,13 @@ export const register = (req, res) => {
 };
 
 export const login = (req, res) => {
+
+  if(req.body.username == "" || req.body.password == "")
+  {
+    return res.status(500).json("Fields cannot be empty");
+  }
+
+
   const q = "SELECT * FROM users WHERE username = ?";
 
   db.query(q, [req.body.username], (err, data) => {

@@ -25,6 +25,7 @@ const Post = ({ post }) => {
     })
   );
 
+
   const queryClient = useQueryClient();
 
   const mutation = useMutation(
@@ -50,6 +51,13 @@ const Post = ({ post }) => {
       },
     }
   );
+
+
+  const temp = post.img.split(".");
+  const type = temp[1];
+
+  const[isImage, setIsImage] = useState(type === "mp4" ? false : true);
+
 
   const handleLike = () => {
     mutation.mutate(data.includes(currentUser.id));
@@ -82,7 +90,19 @@ const Post = ({ post }) => {
         </div>
         <div className="content">
           <p>{post.desc}</p>
-          <img src={"/upload/" + post.img} alt="" />
+          {
+            isImage ? 
+            (
+              <img src={"/upload/" + post.img} alt="" />
+            ) : 
+            (
+              <video width="100%" height="300px" controls>
+              <source src={"/upload/" + post.img} type="video/mp4" />
+              Your browser does not support the video tag.
+              </video>
+            )
+
+          }
         </div>
         <div className="info">
           <div className="item">
