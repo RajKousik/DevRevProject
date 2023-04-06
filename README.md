@@ -10,7 +10,11 @@ In this Web application, users can either login or register and connect with the
 4.Express
 5.Node
 
- 
+![Login page](client/src/assets/login.PNG)
+![Register page](client/src/assets/register.PNG)
+![Home page](client/src/assets/home.PNG)
+![Profile page](client/src/assets/profile.PNG)
+![Post page](client/src/assets/posts.PNG)
 
 # Getting Started with Create React App
 
